@@ -1,0 +1,19 @@
+{
+  "name": "eslint-example",
+  "version": "1.0.0",
+  "description": "Eslint Example",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "npx eslint ./**/*.js --quiet",
+    "lint-fix": "npx eslint ./**/*.js --quiet --fix",
+    "test": "npm run lint"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  },
+  "dependencies": {
+    "lint": "^0.8.19"
+  }
+}
