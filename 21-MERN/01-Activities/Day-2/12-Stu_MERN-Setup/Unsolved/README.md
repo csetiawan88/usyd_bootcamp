@@ -2,7 +2,16 @@
 
 ## Root-level Functionality
 
-* TODO: Explain what each script does in the root-level `package.json` file:
+- TODO: Explain what each script does in the root-level `package.json` file:
+
+- The `npm start` script: In production, we only run the back-end server, which will serve the built React application code as its front end.
+- The `npm run develop` script: In development, we need to run both a back-end server and the React development server, so we use the `concurrently` library to execute two separate promises at the same time.
+
+- The `npm install` script: Since our dependencies for the entire application exist in two smaller applications, we use this script to automatically install all of them at once.
+
+- The `npm run seed` script: We can seed our database with data when we run this command.
+
+- The `npm run build` script: When we deploy our application, we instruct the hosting service to execute the `build` command and build our production-ready React application."
 
 ```json
 "scripts": {
@@ -16,7 +25,9 @@
 
 ## Client-side Functionality
 
-* TODO: Explain what this object does in the client-side `client/vite.config.js` file:
+- TODO: Explain what this object does in the client-side `client/vite.config.js` file:
+
+* Since we run a front-end and back-end server for our full-stack application in development, we set it up so all client-side requests to our API server are prefixed with the API server's URL.
 
 ```js
   proxy: {
@@ -30,14 +41,18 @@
 
 ## Server-side Functionality
 
-* TODO: Add a comment describing the functionality of this block of code in `server/server.js`:
+- TODO: Add a comment describing the functionality of this block of code in `server/server.js`:
+
+* In production, when we no longer need to use the Create React App development server, we set up our server to serve the built React front-end application that is in the `../client/build` directory.
 
 ```js
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/dist')));
-  
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/dist/index.html"));
   });
 }
 ```
+
+- Since the React front-end application will handle its own routing, we set up a wildcard route on our server that will serve the front end whenever a request for a non-API route is received.

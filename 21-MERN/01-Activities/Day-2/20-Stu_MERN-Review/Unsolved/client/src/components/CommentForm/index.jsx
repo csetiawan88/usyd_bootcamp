@@ -21,7 +21,9 @@ const CommentForm = ({ thoughtId }) => {
     event.preventDefault();
 
     try {
-      const { data } = await addComment();
+      const { data } = await addComment({
+        variables: { thoughtId, commentText },
+      });
 
       setCommentText('');
       setCharacterCount(0);

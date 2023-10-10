@@ -12,19 +12,9 @@ const resolvers = {
       return await Class.find({}).populate("professor");
     },
     // TODO: Update resolver to include classes
-    // professors: async () => {
-    //   return await Professor.find({});
-    // }
-
     professors: async () => {
-      const professors = await Professor.find({});
-
-      // Populate the classes field for each professor
-      professors.forEach(async (professor) => {
-        professor.classes = await Class.find({ professor: professor.id });
-      });
-
-      return professors;
+      // return await Professor.find({});
+      return await Professor.find({}).populate("classes");
     },
   },
 };
