@@ -21,12 +21,12 @@ const initialState = {
 test('ADD_STUDENT', () => {
   const newState = reducer(initialState, {
     type: ADD_STUDENT,
-    payload: [
+    payload: 
       {
         name: 'Test Student 3',
         major: 'Major 3',
       },
-    ],
+    
   });
 
   expect(initialState.students.length).toBe(2);

@@ -11,13 +11,24 @@ export const StudentProvider = ({ children }) => {
   const initialState = {
     students: [
       // TODO: Add two students with a `name`, `major` and `id` property
+      {
+        id: 1,
+        name: 'Sayid',
+        major: 'Computer Science',
+      },
+      {
+        id: 2,
+        name: 'Sun-Hwa',
+        major: 'Data Science',
+      },
     ],
   };
 
   // TODO: Fill in the value prop for the provider
   return (
-    <StudentContext.Provider value={}>
+    <StudentContext.Provider value={initialState}>
       {/* //TODO: Render the children from props */}
+      {children}
     </StudentContext.Provider>
   );
 };
